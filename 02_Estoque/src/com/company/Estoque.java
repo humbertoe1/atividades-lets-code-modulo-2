@@ -36,7 +36,7 @@ public class Estoque {
     public void listarProdutosDoEstoque(){
         System.out.println("Segue uma lista de Produtos no estoque " + this.nome + ".");
         for(Produto produto: this.produtoList){
-            System.out.print("ID: " + produto.getId() + " ");
+            System.out.println("ID: " + produto.getId());
             System.out.println("Nome: " + produto.getNome());
             System.out.println("Quantidade em Estoque" + produto.getQuantidadeEmEstoque());
         }
@@ -53,12 +53,15 @@ public class Estoque {
         System.out.println("Quantidade em Estoque" + produtoProcurado.getQuantidadeEmEstoque());
         System.out.println("---");
     }
-    public void adicionarProduto(Produto produto){
+    public void adicionarProduto(Produto produto, int quantidade){
+        produto.setQuantidadeEmEstoque(quantidade);
         this.produtoList.add(produto);
+
     }
     public void removerProduto(Produto produto){
         this.produtoList.remove(produto);
     }
+
 
     public Produto acharProduto(int idDoProduto){
         for(Produto produto: this.produtoList){
