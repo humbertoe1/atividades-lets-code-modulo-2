@@ -45,12 +45,21 @@ public class Main {
                         for(Estoque estoque : cadastroDeEstoques){
                             if(estoque.getId() == escolha){
                                 estoque.listarProdutosDoEstoque();
+                                System.out.println("EXECUTE ALGUMA AÇÃO:");
+                                System.out.println("1 - Remover Produto");
+                                System.out.println("2 - Voltar");
+                                opcao = scanner.nextInt();
+                                if(opcao == 1) {
+                                    System.out.println("Digite o id do produto a ser removido.");
+                                    escolha = scanner.nextInt();
+                                    System.out.println("Digite a quantidade de produtos a serem removidos.");
+                                    quantidade = scanner.nextInt();
+                                    estoque.removerProduto(estoque.acharProduto(escolha), quantidade);
+                                }else{
+                                    break;
+                                }
                             }
                         }
-                        System.out.println("EXECUTE ALGUMA AÇÃO:");
-                        System.out.println("1 - Remover Produto");
-                        System.out.println("2 - Remover quantidade de algum produto");
-
                     }
                     break;
                 case 3:

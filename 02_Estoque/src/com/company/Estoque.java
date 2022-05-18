@@ -58,8 +58,21 @@ public class Estoque {
         this.produtoList.add(produto);
 
     }
-    public void removerProduto(Produto produto){
-        this.produtoList.remove(produto);
+    public void removerProduto(Produto produtoARemover, int quantidade){
+
+        for (Produto produto: produtoList) {
+
+            if(produtoARemover.getId() == produto.getId()) {
+                if (produto.getQuantidadeEmEstoque() > quantidade) {
+                    produto.setQuantidadeEmEstoque(-quantidade);
+                    return;
+                }else if(produto.getQuantidadeEmEstoque() < quantidade){
+                    System.out.println("Quantidade a remover maior que quantidade atual.");
+                    return;
+                }
+            }
+        }
+        this.produtoList.remove(produtoARemover);
     }
 
 
