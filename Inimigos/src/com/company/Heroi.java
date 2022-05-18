@@ -18,10 +18,14 @@ public class Heroi extends Generico {
         if(this.envenenado) {
             System.out.println("Heroi envenado... -5 pontos de vida.");
             this.pontosDeVida -= 5;
+            if(this.pontosDeVida <= 0)
+                this.pontosDeVida = 0;
         }
         if(this.sangrando){
             System.out.println("Heroi sangrando... -6 pontos de vida.");
             this.pontosDeVida -= 6;
+            if(this.pontosDeVida <= 0)
+                this.pontosDeVida = 0;
         }
     }
     public String getTipoDeAtaque(){
@@ -32,6 +36,8 @@ public class Heroi extends Generico {
     }
     public void tomarPocao(){
         this.pontosDeVida += 30;
+        if(this.pontosDeVida >= 100)
+            this.pontosDeVida = 100;
     }
     public void beberDaFonte(){
         this.envenenado = false;
@@ -42,6 +48,7 @@ public class Heroi extends Generico {
     public String apanhar(int dano){
         this.pontosDeVida = this.pontosDeVida - dano;
         if(this.pontosDeVida <=0){
+            this.pontosDeVida = 0;
             return "--✝-MORREU-✝--";
         }else{
             return "recebeu " + dano + " de dano";
@@ -50,6 +57,7 @@ public class Heroi extends Generico {
     public String apanhar(int dano, String tipoDeInimigo){
         this.pontosDeVida = this.pontosDeVida - dano;
         if(pontosDeVida <= 0){
+            this.pontosDeVida = 0;
             return "--✝-MORREU-✝--";
         }else{
             if(dano >= 20 && tipoDeInimigo.equals("Vampiro"))

@@ -97,7 +97,7 @@ public class Main {
                         if (inimigos[iteratorInimigos].getPontosDeVida() > 0) {
                             System.out.println("O " + inimigos[iteratorInimigos].getNome() + " ataca de volta!!");
                             heroi.apanhar(inimigos[iteratorInimigos].atacar(rolarDados()), inimigos[iteratorInimigos].getNome());
-                            System.out.println("[" + heroi.getNome() + "]" + "Pontos de Vida: " + heroi.getPontosDeVida());
+                            System.out.println("[" + heroi.getNome() + "]" + "Pontos de Vida: " + heroi.getPontosDeVida() + "/100");
                             heroi.checaStatus();
                             if(heroi.getPontosDeVida() <= 0){
                                 System.out.println("Voce foi abatido!!!");
