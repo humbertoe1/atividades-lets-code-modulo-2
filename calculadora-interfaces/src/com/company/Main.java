@@ -5,10 +5,11 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Adicao adicao = new Adicao();
-        Subtracao subtracao = new Subtracao();
-        Multiplicacao multiplicacao = new Multiplicacao();
-        Divisao divisao = new Divisao();
+
+        Calculo adicao = new Adicao();
+        Calculo subtracao = new Subtracao();
+        Calculo multiplicacao = new Multiplicacao();
+        Calculo divisao = new Divisao();
         Scanner scanner = new Scanner(System.in);
         double valor1, valor2;
         int opcao = 0;
@@ -77,11 +78,11 @@ public class Main {
 
                     opcao = scanner.nextInt();
 
-                    scanner.nextLine();
+                    pressioneEnterParacontinuar();
                     if(opcao == 1){
                         opcao = -1;
                     }
-                    pressioneEnterParacontinuar();
+
                     break;
                 default:
                     System.out.println("Opção invalida! Tente novamente!");
