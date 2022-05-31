@@ -19,8 +19,5 @@ public class Tabuleiro implements ITabuleiro {
         return false;
     }
 
-    @Override
-    public Inimigo[] gerarInimigos() {
-        return new Inimigo[0];
-    }
+
 }
