@@ -5,19 +5,17 @@ public class Tabuleiro implements ITabuleiro {
     private Deck deck;
 
     @Override
-    public void inserirDeck(Deck deck) {
-        this.deck = deck;
+    public void inserirDeck(Deck deck, int id) {
+
     }
 
     @Override
-    public boolean receberCartaDeAtaque(CartaDeAtaque cartaDeAtaque) {
+    public boolean receberCartaDeAtaque(ICarta carta, Jogador jogador) {
         return false;
     }
 
     @Override
-    public boolean verificaSeVenceu() {
+    public boolean verificaSeVenceu(Jogador jogador) {
         return false;
     }
-
-
 }

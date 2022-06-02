@@ -4,7 +4,8 @@ public class Jogador {
     private int pontosDeVida;
     private boolean vivoOuMorto;
     private int id;
-    ICarta[] playerBoard;
+
+    public ICarta[] playerBoard;
 
     public int getPontosDeVida(){
         return pontosDeVida;
