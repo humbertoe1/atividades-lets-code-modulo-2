@@ -64,4 +64,7 @@ public class Estoque {
         }
 
     }
+    public int getQuantidadeEmEstoque(Produto produto){
+        return produtosNoEstoque.get(produto);
+    }
 }
