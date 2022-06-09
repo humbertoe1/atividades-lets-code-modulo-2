@@ -37,7 +37,7 @@ public class Jogo extends Produto {
     public String toString() {
         return "Jogo{" +
                 super.toString() +
-                "distribuidora='" + distribuidora + '\'' +
+                ", distribuidora='" + distribuidora + '\'' +
                 ", genero='" + genero + '\'' +
                 ", estudio='" + estudio + '\'' +
                 '}';

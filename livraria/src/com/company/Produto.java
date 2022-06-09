@@ -1,6 +1,7 @@
 package com.company;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 
 public abstract class Produto implements Comparable<Produto> {
@@ -23,6 +24,19 @@ public abstract class Produto implements Comparable<Produto> {
         this.nome = nome;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Produto produto = (Produto) o;
+        return id.equals(produto.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
     public Integer getId() {
         return id;
     }
@@ -41,11 +55,12 @@ public abstract class Produto implements Comparable<Produto> {
         return id.compareTo(o1.getId());
     }
 
+
     @Override
     public String toString() {
         return "nome='" + nome + '\'' +
-                ", id=" + id + '\'' +
-                ", preco=" + preco + '\''
+                ", id='" + id + '\'' +
+                ", preço='" + preco + '\''
                 ;
     }
 }

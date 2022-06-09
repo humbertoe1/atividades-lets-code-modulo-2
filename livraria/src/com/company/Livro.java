@@ -42,7 +42,7 @@ public class Livro extends Produto {
     public String toString() {
         return "Livro{" +
                 super.toString() +
-                "genero='" + genero + '\'' +
+                ", genero='" + genero + '\'' +
                 ", escritor='" + escritor + '\'' +
                 ", editora='" + editora + '\'' +
                 '}';

@@ -22,7 +22,7 @@ public class Brinquedo extends Produto {
     public String toString() {
         return "Brinquedo{" +
                 super.toString() +
-                "tipo='" + tipo + '\'' +
+                ", tipo='" + tipo + '\'' +
                 '}';
     }
 }

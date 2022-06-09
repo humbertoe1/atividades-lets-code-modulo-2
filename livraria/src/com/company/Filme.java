@@ -45,7 +45,7 @@ public class Filme extends Produto {
     public String toString() {
         return "Filme{" +
                 super.toString() +
-                "estudio='" + estudio + '\'' +
+                ", estudio='" + estudio + '\'' +
                 ", diretor='" + diretor + '\'' +
                 ", genero='" + genero + '\'' +
                 ", produtor='" + produtor + '\'' +

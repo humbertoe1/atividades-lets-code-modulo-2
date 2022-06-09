@@ -42,7 +42,7 @@ public class AlbumDeMusica extends Produto {
     public String toString() {
         return "AlbumDeMusica{" +
                 super.toString() +
-                "musicoOuBanda='" + musicoOuBanda + '\'' +
+                ", musicoOuBanda='" + musicoOuBanda + '\'' +
                 ", genero='" + genero + '\'' +
                 ", selo='" + selo + '\'' +
                 '}';

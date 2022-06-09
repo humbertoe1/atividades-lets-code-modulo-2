@@ -2,20 +2,25 @@ package com.company;
 
 import java.util.*;
 
-public class Estoque{
-    private List<Produto> produtosDoEstoque = new ArrayList<>();
+public class Estoque {
+   // private List<Produto> produtosDoEstoque = new ArrayList<>();
+    private Map<Produto, Integer> produtosNoEstoque = new HashMap<>();
 
+    public Estoque() {
+    }
 
-    public Estoque(){}
+    public void alterarQuantidadeProduto(Produto produto, int quantidade) {
+        int novoValor = quantidade;
 
-    public void adicionarProduto(Produto produto) {
+        if (produtosNoEstoque.containsKey(produto)) {
+            novoValor = produtosNoEstoque.get(produto) + quantidade;
+        }
 
-        produtosDoEstoque.add(produto);
-        ordenarEstoque();
+        produtosNoEstoque.put(produto, novoValor);
     }
 
     public Produto verProduto(int id) {
-        for (Produto produto : produtosDoEstoque) {
+        for (Produto produto : produtosNoEstoque.keySet()) {
             if (produto.getId() == id) {
                 return produto;
             }
@@ -24,16 +29,16 @@ public class Estoque{
     }
 
     public void removerProduto(Produto produto) {
-        produtosDoEstoque.remove(produto);
-
+        produtosNoEstoque.remove(produto);
     }
 
     public void atualizarProduto(Produto produtoAtualizado) {
-        for (Produto produto : produtosDoEstoque) {
+        int quantidadeNoEstoque;
+        for (Produto produto : produtosNoEstoque.keySet()) {
             if (produto.getId() == produtoAtualizado.getId()) {
-                produtosDoEstoque.remove(produto);
-                produtosDoEstoque.add(produtoAtualizado);
-                ordenarEstoque();
+                quantidadeNoEstoque = produtosNoEstoque.get(produto);
+                produtosNoEstoque.remove(produto);
+                produtosNoEstoque.put(produtoAtualizado, quantidadeNoEstoque);
                 break;
             }
         }
@@ -41,7 +46,7 @@ public class Estoque{
 
     public List<Produto> listarPorCategoria(Class clazz) {
         List<Produto> lista = new ArrayList<>();
-        for (Produto produto : produtosDoEstoque) {
+        for (Produto produto : produtosNoEstoque.keySet()) {
             if (produto.getClass().equals(clazz)) {
                 lista.add(produto);
             }
@@ -49,18 +54,14 @@ public class Estoque{
         return lista;
     }
 
-    public List<Produto> listarTudo() {
-        return produtosDoEstoque;
+    public Set<Produto> listarTudo() {
+        return produtosNoEstoque.keySet();
     }
 
-    public void imprimirEstoque(){
-        for (Produto produto: produtosDoEstoque) {
-            System.out.println(produto);
+    public void imprimirEstoque() {
+        for (Produto produto : produtosNoEstoque.keySet()) {
+            System.out.println(produto + " || " + produtosNoEstoque.get(produto));
         }
 
-    }
-
-    private void ordenarEstoque(){
-        Collections.sort(produtosDoEstoque);
     }
 }
