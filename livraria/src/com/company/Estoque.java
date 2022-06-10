@@ -3,13 +3,13 @@ package com.company;
 import java.util.*;
 
 public class Estoque {
-   // private List<Produto> produtosDoEstoque = new ArrayList<>();
+    // private List<Produto> produtosDoEstoque = new ArrayList<>();
     private Map<Produto, Integer> produtosNoEstoque = new HashMap<>();
 
     public Estoque() {
     }
 
-    public void alterarQuantidadeProduto(Produto produto, int quantidade) {
+    public void alterarQuantidadeProdutoOuCadastrar(Produto produto, int quantidade) {
         int novoValor = quantidade;
 
         if (produtosNoEstoque.containsKey(produto)) {
@@ -54,17 +54,27 @@ public class Estoque {
         return lista;
     }
 
-    public Set<Produto> listarTudo() {
-        return produtosNoEstoque.keySet();
+    public List<Produto> listarTudo() {
+        List<Produto> lista = new ArrayList<>();
+        lista.addAll(produtosNoEstoque.keySet());
+        return lista;
     }
 
     public void imprimirEstoque() {
         for (Produto produto : produtosNoEstoque.keySet()) {
-            System.out.println(produto + " || " + produtosNoEstoque.get(produto));
+            System.out.println(produto + " || QUANTIDADE: " + produtosNoEstoque.get(produto));
         }
-
     }
-    public int getQuantidadeEmEstoque(Produto produto){
+
+    public void imprimirEstoquePorCategoria(Class clazz){
+        for (Produto produto : produtosNoEstoque.keySet()) {
+            if(produto.getClass().equals(clazz)) {
+                System.out.println(produto + " || QUANTIDADE: " + produtosNoEstoque.get(produto));
+            }
+        }
+    }
+
+    public int getQuantidadeEmEstoque(Produto produto) {
         return produtosNoEstoque.get(produto);
     }
 }

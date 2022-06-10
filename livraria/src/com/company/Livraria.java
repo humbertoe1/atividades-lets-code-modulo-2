@@ -14,11 +14,19 @@ public class Livraria {
         estoque = new Estoque();
     }
 
+    public Estoque getEstoque() {
+        return estoque;
+    }
+
+    public Caixa getCaixa() {
+        return caixa;
+    }
+
     public void venda(Produto produto, int quantidade) {
         BigDecimal valorPago = calcularValorPago(produto.getPreco(), quantidade);
 
         caixa.somaValor(valorPago);
-        estoque.alterarQuantidadeProduto(produto, quantidade);
+        estoque.alterarQuantidadeProdutoOuCadastrar(produto, quantidade);
     }
 
     private BigDecimal calcularValorPago(BigDecimal valor, int quantidade) {

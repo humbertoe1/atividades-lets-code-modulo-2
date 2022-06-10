@@ -7,8 +7,8 @@ public class Livro extends Produto {
     private String escritor;
     private String editora;
 
-    public Livro(String nome, int id, BigDecimal preco, String genero, String escritor, String editora) {
-        super(nome, id, preco);
+    public Livro(String nome, int id, BigDecimal preco, boolean produtoAdulto, String genero, String escritor, String editora) {
+        super(nome, id, preco, produtoAdulto);
         this.genero = genero;
         this.escritor = escritor;
         this.editora = editora;

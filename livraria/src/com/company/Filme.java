@@ -8,38 +8,46 @@ public class Filme extends Produto {
     private String genero;
     private String produtor;
 
-    public Filme(String nome, int id, BigDecimal preco, String estudio, String diretor, String genero, String produtor) {
-        super(nome, id, preco);
+    public Filme(String nome, int id, BigDecimal preco, boolean produtoAdulto, String estudio, String diretor, String genero, String produtor) {
+        super(nome, id, preco, produtoAdulto);
         this.estudio = estudio;
         this.diretor = diretor;
         this.genero = genero;
         this.produtor = produtor;
     }
 
-    public void setEstudio(String estudio){
+    public void setEstudio(String estudio) {
         this.estudio = estudio;
     }
-    public void setDiretor(String diretor){
+
+    public void setDiretor(String diretor) {
         this.diretor = diretor;
     }
-    public void setGenero(String genero){
+
+    public void setGenero(String genero) {
         this.genero = genero;
     }
-    public void setProdutor(String produtor){
+
+    public void setProdutor(String produtor) {
         this.produtor = produtor;
     }
-    public String getEstudio(){
+
+    public String getEstudio() {
         return estudio;
     }
-    public String getDiretor(){
+
+    public String getDiretor() {
         return diretor;
     }
-    public String getGenero(){
+
+    public String getGenero() {
         return genero;
     }
-    public String getProdutor(){
+
+    public String getProdutor() {
         return produtor;
     }
+
 
     @Override
     public String toString() {

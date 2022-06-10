@@ -7,29 +7,34 @@ public class Jogo extends Produto {
     private String genero;
     private String estudio;
 
-    public Jogo(String nome, int id, BigDecimal preco, String distribuidora, String genero, String estudio) {
-        super(nome, id, preco);
+    public Jogo(String nome, int id, BigDecimal preco, boolean produtoAdulto, String distribuidora, String genero, String estudio) {
+        super(nome, id, preco, produtoAdulto);
         this.distribuidora = distribuidora;
         this.genero = genero;
         this.estudio = estudio;
     }
 
-    public void setDistribuidora(String distribuidora){
+    public void setDistribuidora(String distribuidora) {
         this.distribuidora = distribuidora;
     }
-    public void setGenero(String genero){
+
+    public void setGenero(String genero) {
         this.genero = genero;
     }
-    public void setEstudio(String estudio){
+
+    public void setEstudio(String estudio) {
         this.estudio = estudio;
     }
-    public String getDistribuidora(){
+
+    public String getDistribuidora() {
         return distribuidora;
     }
-    public String getGenero(){
+
+    public String getGenero() {
         return genero;
     }
-    public String getEstudio(){
+
+    public String getEstudio() {
         return estudio;
     }
 

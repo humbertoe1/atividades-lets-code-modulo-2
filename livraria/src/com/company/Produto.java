@@ -9,11 +9,14 @@ public abstract class Produto implements Comparable<Produto> {
     private String nome;
     private Integer id;
     private BigDecimal preco;
+    //A pedidos do cliente, está sendo adiconada uma nova propriedade na Classe produto, para restringir o uso caso o comprador seja maior de 18 anos.
+    boolean produtoAdulto = false;
 
-    public Produto(String nome, int id, BigDecimal preco) {
+    public Produto(String nome, int id, BigDecimal preco, boolean produtoAdulto) {
         this.nome = nome;
         this.id = id;
         this.preco = preco;
+        this.produtoAdulto = produtoAdulto;
     }
 
     public String getNome() {
@@ -62,5 +65,13 @@ public abstract class Produto implements Comparable<Produto> {
                 ", id='" + id + '\'' +
                 ", preço='" + preco + '\''
                 ;
+    }
+
+    public void setProdutoAdulto(boolean produtoAdulto) {
+        this.produtoAdulto = produtoAdulto;
+    }
+
+    public boolean isProdutoAdulto() {
+        return produtoAdulto;
     }
 }

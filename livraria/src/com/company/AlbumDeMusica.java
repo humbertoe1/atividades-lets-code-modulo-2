@@ -7,8 +7,8 @@ public class AlbumDeMusica extends Produto {
     private String genero;
     private String selo;
 
-    public AlbumDeMusica(String nome, int id, BigDecimal preco, String musicoOuBanda, String genero, String selo) {
-        super(nome, id, preco);
+    public AlbumDeMusica(String nome, int id, BigDecimal preco, boolean produtoAdulto, String musicoOuBanda, String genero, String selo) {
+        super(nome, id, preco, produtoAdulto);
         this.musicoOuBanda = musicoOuBanda;
         this.genero = genero;
         this.selo = selo;
