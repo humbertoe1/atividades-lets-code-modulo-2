@@ -42,10 +42,12 @@ public class Main {
         while(opcao != 0) {
 
             System.out.println("MENU PRINCIPAL - ESCOLHA UMA OPÇÃO:");
+            System.out.println("SALDO EM CAIXA: " + livraria.getCaixa().getSaldo());
             System.out.println("1 - REALIZAR VENDA");
             System.out.println("2 - ADICIONAR/CADASTRAR PRODUTO");
             System.out.println("3 - LISTAR ESTOQUE");
             System.out.println("4 - ALTERAR DADOS DE PRODUTO");
+            System.out.println("5 - REMOVER PRODUTO (OU ZERAR ESTOQUE)");
             System.out.println("0 - SAIR");
             opcao = scanner.nextInt();
             scanner.nextLine();
@@ -257,8 +259,146 @@ public class Main {
                     System.out.println("Digite o id do produto que voce quer alterar: ");
                     idProduto = scanner.nextInt();
                     scanner.nextLine();
-                    produto = livraria.getEstoque().verProduto(idProduto);
+                    clazz = livraria.getEstoque().verProduto(idProduto).getClass();
+                    if(clazz == AlbumDeMusica.class){
+                        System.out.println("Entre o novo nome do produto: ");
+                        nomeProduto = scanner.nextLine();
+                        /*System.out.println("Entre o id do produto: ");
+                        idProduto = scanner.nextInt();
+                        scanner.nextLine();*/
+                        System.out.println("Entre o novo preço do produto: ");
+                        precoProduto = new BigDecimal(scanner.nextLine());
+                        System.out.println("Esse Produto pode ser vendido para menores de 18 anos?");
+                        System.out.println("[1] SIM\n [2] NÃO");
+                        opcao = scanner.nextInt();
+                        scanner.nextLine();
+                        produtoAdulto = !(opcao == 1);
+                        System.out.println("Entre o novo nome do musico ou da banda: ");
+                        musicoOuBanda = scanner.nextLine();
+                        System.out.println("Entre o novo genero musical: ");
+                        generoMusica = scanner.nextLine();
+                        System.out.println("Entre o novo selo musical: ");
+                        seloMusica = scanner.nextLine();
+                        System.out.println("Esse Produto pode ser vendido para menores de 18 anos?");
 
+
+                        albumDeMusica = new AlbumDeMusica(nomeProduto, idProduto, precoProduto, produtoAdulto, musicoOuBanda, generoMusica, seloMusica);
+                        System.out.println("Se quiser adicionar ou remover alguma quantidade desse produto, entre o valor positivo, negativo, ou zero para manter ");
+
+                        livraria.getEstoque().alterarQuantidadeProdutoOuCadastrar(albumDeMusica, scanner.nextInt());
+                        scanner.nextLine();
+                    }
+                    if(clazz == Brinquedo.class){
+                        System.out.println("Entre o novo nome do produto: ");
+                        nomeProduto = scanner.nextLine();
+                        /*System.out.println("Entre o id do produto: ");
+                        idProduto = scanner.nextInt();
+                        scanner.nextLine();*/
+                        System.out.println("Entre o novo preço do produto: ");
+                        precoProduto = new BigDecimal(scanner.nextLine());
+                        System.out.println("Esse Produto pode ser vendido para menores de 18 anos?");
+                        System.out.println("[1] SIM\n [2] NÃO");
+                        opcao = scanner.nextInt();
+                        scanner.nextLine();
+                        produtoAdulto = !(opcao == 1);
+                        System.out.println("Qual o novo tipo desse brinquedo?");
+                        tipoDeBrinquedo = scanner.nextLine();
+
+                        brinquedo = new Brinquedo(nomeProduto, idProduto, precoProduto, produtoAdulto, tipoDeBrinquedo);
+                        System.out.println("Se quiser adicionar ou remover alguma quantidade desse produto, entre o valor positivo, negativo, ou zero para manter ");
+                        livraria.getEstoque().alterarQuantidadeProdutoOuCadastrar(brinquedo, scanner.nextInt());
+                        scanner.nextLine();
+                    }
+                    if(clazz == Filme.class){
+                        System.out.println("Entre o novo nome do produto: ");
+                        nomeProduto = scanner.nextLine();
+                        /*System.out.println("Entre o id do produto: ");
+                        idProduto = scanner.nextInt();
+                        scanner.nextLine();*/
+                        System.out.println("Entre o novo preço do produto: ");
+                        precoProduto = new BigDecimal(scanner.nextLine());
+                        System.out.println("Esse Produto pode ser vendido para menores de 18 anos?");
+                        System.out.println("[1] SIM\n [2] NÃO");
+                        opcao = scanner.nextInt();
+                        scanner.nextLine();
+                        produtoAdulto = !(opcao == 1);
+                        System.out.println("Entre o novo estudio do filme: ");
+                        estudioFilme = scanner.nextLine();
+                        System.out.println("Entre o novo diretor do filme: ");
+                        diretorFilme = scanner.nextLine();
+                        System.out.println("Entre o novo genero do filme: ");
+                        generoFilme = scanner.nextLine();
+                        System.out.println("Entre o novo produtor do filme: ");
+                        produtorFilme = scanner.nextLine();
+
+                        filme = new Filme(nomeProduto, idProduto, precoProduto, produtoAdulto, estudioFilme, diretorFilme, generoFilme, produtorFilme);
+                        System.out.println("Se quiser adicionar ou remover alguma quantidade desse produto, entre o valor positivo, negativo, ou zero para manter  ");
+                        livraria.getEstoque().alterarQuantidadeProdutoOuCadastrar(filme, scanner.nextInt());
+                        scanner.nextLine();
+                    }
+                    if(clazz == Jogo.class){
+                        System.out.println("Entre o novo nome do produto: ");
+                        nomeProduto = scanner.nextLine();
+                        /*System.out.println("Entre o id do produto: ");
+                        idProduto = scanner.nextInt();
+                        scanner.nextLine();*/
+                        System.out.println("Entre o novo preço do produto: ");
+                        precoProduto = new BigDecimal(scanner.nextLine());
+                        System.out.println("Esse Produto pode ser vendido para menores de 18 anos?");
+                        System.out.println("[1] SIM\n [2] NÃO");
+                        opcao = scanner.nextInt();
+                        scanner.nextLine();
+                        produtoAdulto = !(opcao == 1);
+                        System.out.println("Entre o novo nome da distribuidora: ");
+                        distribuidoraJogo = scanner.nextLine();
+                        System.out.println("Entre o novo genero do jogo: ");
+                        generoJogo = scanner.nextLine();
+                        System.out.println("Entre o novo nome do estudio: ");
+                        estudioJogo = scanner.nextLine();
+
+                        jogo = new Jogo(nomeProduto, idProduto, precoProduto, produtoAdulto, distribuidoraJogo, generoJogo, estudioJogo);
+                        System.out.println("Se quiser adicionar ou remover alguma quantidade desse produto, entre o valor positivo, negativo, ou zero para manter ");
+                        livraria.getEstoque().alterarQuantidadeProdutoOuCadastrar(jogo, scanner.nextInt());
+                        scanner.nextLine();
+                    }
+                    if(clazz == Livro.class){
+                        System.out.println("Entre o novo nome do produto: ");
+                        nomeProduto = scanner.nextLine();
+                        /*System.out.println("Entre o id do produto: ");
+                        idProduto = scanner.nextInt();
+                        scanner.nextLine();
+                        */
+
+                        System.out.println("Entre o novo preço do produto: ");
+                        precoProduto = new BigDecimal(scanner.nextLine());
+                        System.out.println("Esse Produto pode ser vendido para menores de 18 anos?");
+                        System.out.println("[1] SIM\n [2] NÃO");
+                        opcao = scanner.nextInt();
+                        scanner.nextLine();
+                        produtoAdulto = !(opcao == 1);
+                        System.out.println("Entre o novo genero do livro: ");
+                        generoLivro = scanner.nextLine();
+                        System.out.println("Entre o novo escritor do livro: ");
+                        escritorLivro = scanner.nextLine();
+                        System.out.println("Entre a novo editora do livro: ");
+                        editoraLivro = scanner.nextLine();
+
+                        livro = new Livro(nomeProduto, idProduto, precoProduto, produtoAdulto, generoLivro, escritorLivro, editoraLivro);
+                        System.out.println("Se quiser adicionar ou remover alguma quantidade desse produto, entre o valor positivo, negativo, ou zero para manter  ");
+                        livraria.getEstoque().alterarQuantidadeProdutoOuCadastrar(livro, scanner.nextInt());
+                        scanner.nextLine();
+                    }
+                    break;
+                case 5:
+                    System.out.println("Qual produto você quer remover?");
+                    livraria.getEstoque().imprimirEstoque();
+                    System.out.println("Entre o id do produto a ser removido: ");
+                    livraria.getEstoque().removerProduto(livraria.getEstoque().verProduto(scanner.nextInt()));
+                    System.out.println("PRODUTO REMOVIDO");
+                    break;
+                default:
+                    System.out.println("Opção invalida, tente novamente.");
+                    break;
             }
         }
 

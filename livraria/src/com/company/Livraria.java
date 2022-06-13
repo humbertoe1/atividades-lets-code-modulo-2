@@ -31,7 +31,7 @@ public class Livraria {
 
     private BigDecimal calcularValorPago(BigDecimal valor, int quantidade) {
 
-        BigDecimal valorPago = new BigDecimal("quantidade").multiply(valor);
+        BigDecimal valorPago = new BigDecimal(quantidade).multiply(valor);
         if (valorPago.compareTo(VALOR_PROMOCIONAL) >= 0) {
             valorPago = valorPago.multiply(DESCONTO);
         }

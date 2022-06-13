@@ -8,6 +8,9 @@ public class Caixa {
     public Caixa(BigDecimal saldo) {
         this.saldo = saldo;
     }
+    public BigDecimal getSaldo(){
+        return saldo;
+    }
 
     public void somaValor(BigDecimal valor) {
         saldo = saldo.add(valor.abs());
