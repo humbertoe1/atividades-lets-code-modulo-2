@@ -6,12 +6,18 @@ public class Livraria {
 
     private Caixa caixa;
     private Estoque estoque;
+    private GeradorDeID geradorDeID;
     private final BigDecimal VALOR_PROMOCIONAL = new BigDecimal("200");
     private final BigDecimal DESCONTO = new BigDecimal("0.85");
 
     public Livraria() {
         caixa = new Caixa(BigDecimal.ZERO);
         estoque = new Estoque();
+        geradorDeID = new GeradorDeID();
+    }
+
+    public GeradorDeID getGeradorDeID() {
+        return geradorDeID;
     }
 
     public Estoque getEstoque() {
@@ -29,6 +35,7 @@ public class Livraria {
         estoque.alterarQuantidadeProdutoOuCadastrar(produto, quantidade);
     }
 
+
     private BigDecimal calcularValorPago(BigDecimal valor, int quantidade) {
 
         BigDecimal valorPago = new BigDecimal(quantidade).multiply(valor);
@@ -37,5 +44,9 @@ public class Livraria {
         }
         return valorPago;
     }
+    public boolean analisarIdentidade(int idade){
+        return (idade >= 18);
+    }
+
 
 }

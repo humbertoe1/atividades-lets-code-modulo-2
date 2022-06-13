@@ -9,7 +9,6 @@ public class Main {
 
     public static void main(String[] args) {
         //Front end:
-        List<Produto> listaParaListar;
         int quantidade;
         Class clazz;
         Livraria livraria = new Livraria();
@@ -47,7 +46,7 @@ public class Main {
             System.out.println("2 - ADICIONAR/CADASTRAR PRODUTO");
             System.out.println("3 - LISTAR ESTOQUE");
             System.out.println("4 - ALTERAR DADOS DE PRODUTO");
-            System.out.println("5 - REMOVER PRODUTO (OU ZERAR ESTOQUE)");
+            System.out.println("5 - REMOVER PRODUTO");
             System.out.println("0 - SAIR");
             opcao = scanner.nextInt();
             scanner.nextLine();
@@ -56,6 +55,14 @@ public class Main {
                 case 1:
                     System.out.println("Entre o id do Produto: ");
                     produto = livraria.getEstoque().verProduto(scanner.nextInt());
+                    if(produto.isProdutoAdulto()){
+                        System.out.println("Entre idade do comprador: ");
+                        if(!livraria.analisarIdentidade(scanner.nextInt())){
+                            scanner.nextLine();
+                            System.out.println("ESSE PRODUTO É PROIBIDO PARA MENORES DE 18 ANOS");
+                            break;
+                        }
+                    }
                     scanner.nextLine();
                     System.out.println("Entre a quantidade que vai ser vendida: ");
                     livraria.venda(produto, scanner.nextInt());
@@ -81,9 +88,7 @@ public class Main {
                             case 1:
                                 System.out.println("Entre o nome do produto: ");
                                 nomeProduto = scanner.nextLine();
-                                System.out.println("Entre o id do produto: ");
-                                idProduto = scanner.nextInt();
-                                scanner.nextLine();
+                                idProduto = livraria.getGeradorDeID().gerarId();
                                 System.out.println("Entre o preço do produto: ");
                                 precoProduto = new BigDecimal(scanner.nextLine());
                                 System.out.println("Esse Produto pode ser vendido para menores de 18 anos?");
@@ -97,7 +102,7 @@ public class Main {
                                 generoMusica = scanner.nextLine();
                                 System.out.println("Entre o selo: ");
                                 seloMusica = scanner.nextLine();
-                                System.out.println("Esse Produto pode ser vendido para menores de 18 anos?");
+
 
 
                                 albumDeMusica = new AlbumDeMusica(nomeProduto, idProduto, precoProduto, produtoAdulto, musicoOuBanda, generoMusica, seloMusica);
@@ -109,9 +114,7 @@ public class Main {
                             case 2:
                                 System.out.println("Entre o nome do produto: ");
                                 nomeProduto = scanner.nextLine();
-                                System.out.println("Entre o id do produto: ");
-                                idProduto = scanner.nextInt();
-                                scanner.nextLine();
+                                idProduto =  livraria.getGeradorDeID().gerarId();
                                 System.out.println("Entre o preço do produto: ");
                                 precoProduto = new BigDecimal(scanner.nextLine());
                                 System.out.println("Esse Produto pode ser vendido para menores de 18 anos?");
@@ -130,9 +133,7 @@ public class Main {
                             case 3:
                                 System.out.println("Entre o nome do produto: ");
                                 nomeProduto = scanner.nextLine();
-                                System.out.println("Entre o id do produto: ");
-                                idProduto = scanner.nextInt();
-                                scanner.nextLine();
+                                idProduto =  livraria.getGeradorDeID().gerarId();
                                 System.out.println("Entre o preço do produto: ");
                                 precoProduto = new BigDecimal(scanner.nextLine());
                                 System.out.println("Esse Produto pode ser vendido para menores de 18 anos?");
@@ -157,9 +158,7 @@ public class Main {
                             case 4:
                                 System.out.println("Entre o nome do produto: ");
                                 nomeProduto = scanner.nextLine();
-                                System.out.println("Entre o id do produto: ");
-                                idProduto = scanner.nextInt();
-                                scanner.nextLine();
+                                idProduto =  livraria.getGeradorDeID().gerarId();
                                 System.out.println("Entre o preço do produto: ");
                                 precoProduto = new BigDecimal(scanner.nextLine());
                                 System.out.println("Esse Produto pode ser vendido para menores de 18 anos?");
@@ -182,9 +181,7 @@ public class Main {
                             case 5:
                                 System.out.println("Entre o nome do produto: ");
                                 nomeProduto = scanner.nextLine();
-                                System.out.println("Entre o id do produto: ");
-                                idProduto = scanner.nextInt();
-                                scanner.nextLine();
+                                idProduto =  livraria.getGeradorDeID().gerarId();
                                 System.out.println("Entre o preço do produto: ");
                                 precoProduto = new BigDecimal(scanner.nextLine());
                                 System.out.println("Esse Produto pode ser vendido para menores de 18 anos?");
@@ -396,49 +393,22 @@ public class Main {
                     livraria.getEstoque().removerProduto(livraria.getEstoque().verProduto(scanner.nextInt()));
                     System.out.println("PRODUTO REMOVIDO");
                     break;
+                case 0:
+                    System.out.println("Certeza que deseja sair?");
+                    opcao = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.println("[1] SIM\n[2] NÃO");
+                    if (opcao == 1){
+                        opcao = 0;
+                    }else{
+                        opcao = 1;
+                    }
+                    break;
                 default:
                     System.out.println("Opção invalida, tente novamente.");
                     break;
             }
         }
-
-	    Livro biblia = new Livro("Biblia", 1, BigDecimal.TEN, false, "Religioso", "Diversos", "Paulos");
-        Livro bibliaNova = new Livro("Biblia2.0", 1, BigDecimal.ONE, false,"Religioso2", "Diversos2", "Paulos2");
-
-        Estoque estoque = new Estoque();
-        estoque.alterarQuantidadeProdutoOuCadastrar(biblia, 10);
-        List<Produto> livros = estoque.listarPorCategoria(Livro.class);
-
-        estoque.atualizarProduto(bibliaNova);
-
-        livros = estoque.listarPorCategoria(Livro.class);
-
-
-        Jogo xadrez = new Jogo("Xadrez", 3, new BigDecimal("3.4"), false, "Jagex", "Estrategia", "Grow");
-        estoque.alterarQuantidadeProdutoOuCadastrar(xadrez, 3);
-
-        estoque.alterarQuantidadeProdutoOuCadastrar(biblia, -3);
-        estoque.imprimirEstoque();
     }
 
-    public static void menuPrincpal(Livraria livraria){
-        int opcao= 0;
-        Scanner scanner = new Scanner(System.in);
-        opcao = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("MENU PRINCIPAL - ESCOLHA UMA OPÇÃO:");
-        System.out.println("1 - REALIZAR VENDA");
-        System.out.println("2 - CADASTRAR PRODUTO");
-        System.out.println("3 - LISTAR ESTOQUE");
-        System.out.println("0 - SAIR");
-    }
-
-    public static void menuVenda(Livraria livrariap){
-        int opcao = 0;
-        Scanner scanner = new Scanner(System.in);
-        opcao = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("DIGITE O ID DO PRODUTO A SER VENDIDO");
-
-    }
 }
